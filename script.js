@@ -1,0 +1,162 @@
+
+const hiragana = [
+    // Basic
+    'あ','い','う','え','お','か','き','く','け','こ',
+    'さ','し','す','せ','そ','た','ち','つ','て','と',
+    'な','に','ぬ','ね','の','は','ひ','ふ','へ','ほ',
+    'ま','み','む','め','も','や','ゆ','よ','ら','り','る','れ','ろ','わ','を','ん',
+    // Dakuon
+    'が','ぎ','ぐ','げ','ご','ざ','じ','ず','ぜ','ぞ',
+    'だ','ぢ','づ','で','ど','ば','び','ぶ','べ','ぼ',
+    // Handakuon
+    'ぱ','ぴ','ぷ','ぺ','ぽ',
+    // Yoon
+    'きゃ','きゅ','きょ','しゃ','しゅ','しょ','ちゃ','ちゅ','ちょ',
+    'にゃ','にゅ','にょ','ひゃ','ひゅ','ひょ','みゃ','みゅ','みょ',
+    'りゃ','りゅ','りょ','ぎゃ','ぎゅ','ぎょ','じゃ','じゅ','じょ',
+    'びゃ','びゅ','びょ','ぴゃ','ぴゅ','ぴょ'
+  ];
+  
+  
+   const katakana = [
+    // Basic
+    'ア','イ','ウ','エ','オ','カ','キ','ク','ケ','コ',
+    'サ','シ','ス','セ','ソ','タ','チ','ツ','テ','ト',
+    'ナ','ニ','ヌ','ネ','ノ','ハ','ヒ','フ','ヘ','ホ',
+    'マ','ミ','ム','メ','モ','ヤ','ユ','ヨ','ラ','リ','ル','レ','ロ','ワ','ヲ','ン',
+    // Dakuon
+    'ガ','ギ','グ','ゲ','ゴ','ザ','ジ','ズ','ゼ','ゾ',
+    'ダ','ヂ','ヅ','デ','ド','バ','ビ','ブ','ベ','ボ',
+    // Handakuon
+    'パ','ピ','プ','ペ','ポ',
+    // Yoon
+    'キャ','キュ','キョ','シャ','シュ','ショ','チャ','チュ','チョ',
+    'ニャ','ニュ','ニョ','ヒャ','ヒュ','ヒョ','ミャ','ミュ','ミョ',
+    'リャ','リュ','リョ','ギャ','ギュ','ギョ','ジャ','ジュ','ジョ',
+    'ビャ','ビュ','ビョ','ピャ','ピュ','ピョ'
+  ];
+  
+  
+    const kanaToRomaji = {
+    // Basic
+    'あ': 'a', 'い': 'i', 'う': 'u', 'え': 'e', 'お': 'o',
+    'か': 'ka', 'き': 'ki', 'く': 'ku', 'け': 'ke', 'こ': 'ko',
+    'さ': 'sa', 'し': 'shi', 'す': 'su', 'せ': 'se', 'そ': 'so',
+    'た': 'ta', 'ち': 'chi', 'つ': 'tsu', 'て': 'te', 'と': 'to',
+    'な': 'na', 'に': 'ni', 'ぬ': 'nu', 'ね': 'ne', 'の': 'no',
+    'は': 'ha', 'ひ': 'hi', 'ふ': 'fu', 'へ': 'he', 'ほ': 'ho',
+    'ま': 'ma', 'み': 'mi', 'む': 'mu', 'め': 'me', 'も': 'mo',
+    'や': 'ya', 'ゆ': 'yu', 'よ': 'yo',
+    'ら': 'ra', 'り': 'ri', 'る': 'ru', 'れ': 're', 'ろ': 'ro',
+    'わ': 'wa', 'を': 'wo', 'ん': 'n',
+    // Dakuon
+    'が': 'ga', 'ぎ': 'gi', 'ぐ': 'gu', 'げ': 'ge', 'ご': 'go',
+    'ざ': 'za', 'じ': 'ji', 'ず': 'zu', 'ぜ': 'ze', 'ぞ': 'zo',
+    'だ': 'da', 'ぢ': 'ji', 'づ': 'zu', 'で': 'de', 'ど': 'do',
+    'ば': 'ba', 'び': 'bi', 'ぶ': 'bu', 'べ': 'be', 'ぼ': 'bo',
+    // Handakuon
+    'ぱ': 'pa', 'ぴ': 'pi', 'ぷ': 'pu', 'ぺ': 'pe', 'ぽ': 'po',
+    // Yoon
+    'きゃ': 'kya', 'きゅ': 'kyu', 'きょ': 'kyo',
+    'しゃ': 'sha', 'しゅ': 'shu', 'しょ': 'sho',
+    'ちゃ': 'cha', 'ちゅ': 'chu', 'ちょ': 'cho',
+    'にゃ': 'nya', 'にゅ': 'nyu', 'にょ': 'nyo',
+    'ひゃ': 'hya', 'ひゅ': 'hyu', 'ひょ': 'hyo',
+    'みゃ': 'mya', 'みゅ': 'myu', 'みょ': 'myo',
+    'りゃ': 'rya', 'りゅ': 'ryu', 'りょ': 'ryo',
+    'ぎゃ': 'gya', 'ぎゅ': 'gyu', 'ぎょ': 'gyo',
+    'じゃ': 'ja',  'じゅ': 'ju',  'じょ': 'jo',
+    'びゃ': 'bya', 'びゅ': 'byu', 'びょ': 'byo',
+    'ぴゃ': 'pya', 'ぴゅ': 'pyu', 'ぴょ': 'pyo',
+  
+    // Katakana (same mappings)
+    'ア': 'a', 'イ': 'i', 'ウ': 'u', 'エ': 'e', 'オ': 'o',
+    'カ': 'ka', 'キ': 'ki', 'ク': 'ku', 'ケ': 'ke', 'コ': 'ko',
+    'サ': 'sa', 'シ': 'shi', 'ス': 'su', 'セ': 'se', 'ソ': 'so',
+    'タ': 'ta', 'チ': 'chi', 'ツ': 'tsu', 'テ': 'te', 'ト': 'to',
+    'ナ': 'na', 'ニ': 'ni', 'ヌ': 'nu', 'ネ': 'ne', 'ノ': 'no',
+    'ハ': 'ha', 'ヒ': 'hi', 'フ': 'fu', 'ヘ': 'he', 'ホ': 'ho',
+    'マ': 'ma', 'ミ': 'mi', 'ム': 'mu', 'メ': 'me', 'モ': 'mo',
+    'ヤ': 'ya', 'ユ': 'yu', 'ヨ': 'yo',
+    'ラ': 'ra', 'リ': 'ri', 'ル': 'ru', 'レ': 're', 'ロ': 'ro',
+    'ワ': 'wa', 'ヲ': 'wo', 'ン': 'n',
+    // Dakuon
+    'ガ': 'ga', 'ギ': 'gi', 'グ': 'gu', 'ゲ': 'ge', 'ゴ': 'go',
+    'ザ': 'za', 'ジ': 'ji', 'ズ': 'zu', 'ゼ': 'ze', 'ゾ': 'zo',
+    'ダ': 'da', 'ヂ': 'ji', 'ヅ': 'zu', 'デ': 'de', 'ド': 'do',
+    'バ': 'ba', 'ビ': 'bi', 'ブ': 'bu', 'ベ': 'be', 'ボ': 'bo',
+    // Handakuon
+    'パ': 'pa', 'ピ': 'pi', 'プ': 'pu', 'ペ': 'pe', 'ポ': 'po',
+    // Yoon
+    'キャ': 'kya', 'キュ': 'kyu', 'キョ': 'kyo',
+    'シャ': 'sha', 'シュ': 'shu', 'ショ': 'sho',
+    'チャ': 'cha', 'チュ': 'chu', 'チョ': 'cho',
+    'ニャ': 'nya', 'ニュ': 'nyu', 'ニョ': 'nyo',
+    'ヒャ': 'hya', 'ヒュ': 'hyu', 'ヒョ': 'hyo',
+    'ミャ': 'mya', 'ミュ': 'myu', 'ミョ': 'myo',
+    'リャ': 'rya', 'リュ': 'ryu', 'リョ': 'ryo',
+    'ギャ': 'gya', 'ギュ': 'gyu', 'ギョ': 'gyo',
+    'ジャ': 'ja',  'ジュ': 'ju',  'ジョ': 'jo',
+    'ビャ': 'bya', 'ビュ': 'byu', 'ビョ': 'byo',
+    'ピャ': 'pya', 'ピュ': 'pyu', 'ピョ': 'pyo'
+  };
+  
+  
+    let loopInterval = null;
+    let nextSetTimeout = null;
+  
+    function restartLoop() {
+      clearInterval(loopInterval);
+      clearTimeout(nextSetTimeout);
+      const numCards = parseInt(document.getElementById('numCards').value);
+      const displayTime = parseFloat(document.getElementById('displayTime').value) * 1000;
+      showCards(numCards);
+      loopInterval = setInterval(() => {
+        showRomaji();
+        nextSetTimeout = setTimeout(() => showCards(numCards), 1000);
+      }, displayTime);
+    }
+  
+    function getKanaPool() {
+      const kanaType = document.getElementById('kanaType').value;
+      if (kanaType === 'hiragana') return hiragana;
+      if (kanaType === 'katakana') return katakana;
+      return hiragana.concat(katakana);
+    }
+  
+    function showCards(num) {
+      const container = document.getElementById('cardContainer');
+      container.innerHTML = '';
+      const symbols = getKanaPool().sort(() => 0.5 - Math.random());
+      for (let i = 0; i < num; i++) {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `<div class="kana">${symbols[i]}</div><div class="romaji" style="visibility:hidden;font-size:1rem;margin-top:0.5rem;"></div>`;
+        container.appendChild(card);
+      }
+    }
+  
+    function showRomaji() {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        const kana = card.querySelector('.kana').textContent;
+        const romajiEl = card.querySelector('.romaji');
+        romajiEl.textContent = kanaToRomaji[kana] || '?';
+        romajiEl.style.visibility = 'visible';
+      });
+    }
+  
+    // Start immediately
+    window.onload = restartLoop;
+  
+  function updateTimeLabel() {
+    const timeSlider = document.getElementById('displayTime');
+    const timeValue = document.getElementById('timeValue');
+    timeValue.textContent = parseFloat(timeSlider.value).toFixed(1);
+  }
+  function updateRomajiLabel() {
+    const romajiSlider = document.getElementById('romajiDuration');
+    const romajiValue = document.getElementById('romajiValue');
+    romajiValue.textContent = parseFloat(romajiSlider.value).toFixed(1);
+  }
+  
