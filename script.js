@@ -113,7 +113,7 @@ const hiragana = [
       showCards(numCards);
       loopInterval = setInterval(() => {
         showRomaji();
-        nextSetTimeout = setTimeout(() => showCards(numCards), 1000);
+        nextSetTimeout = setTimeout(() => showCards(numCards), 1300);
       }, displayTime);
     }
   
